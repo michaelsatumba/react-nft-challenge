@@ -1,0 +1,8 @@
+.punkList {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    overflow: scroll;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
