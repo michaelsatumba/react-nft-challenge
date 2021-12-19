@@ -31,19 +31,34 @@ function App() {
 
   
 
-  useEffect(() => {
-    const getMyNfts = async () => {
-      const openseaData = await axios.get(
-        "https://testnets-api.opensea.io/assets?asset_contract_address=0xc53C4266f4A9d1293e6C3a8b43788B6bB6a120E2&order_direction=asc"
-      )
-      console.log(openseaData.data.assets)
-      setPunkListData(openseaData.data.assets)
+  // useEffect(() => {
+  //   const getMyNfts = async () => {
+  //     const openseaData = await axios.get(
+  //       "https://testnets-api.opensea.io/assets?asset_contract_address=0xc53C4266f4A9d1293e6C3a8b43788B6bB6a120E2&order_direction=asc"
+  //     )
+  //     console.log(openseaData.data.assets)
+  //     setPunkListData(openseaData.data.assets)
+  //   }
+
+  //   return getMyNfts()
+  // }, [])
+
+  useEffect( ()=>{
+
+    const getMyNfts = async ()=>{
+
+     const openseaData = await axios('https://nft-backend1.herokuapp.com/',{
+
+     headers: {
+      'Access-Control-Allow-Origin': '*'
+     }
+     })
+     
+     setPunkListData(openseaData.data.assets)
     }
-
-    // return
-     getMyNfts()
+    return getMyNfts()
   }, [])
-
+  
   return (
     <div className="app">
       <Header />
